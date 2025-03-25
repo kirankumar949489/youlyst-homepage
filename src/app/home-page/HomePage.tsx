@@ -73,7 +73,6 @@ const SearchBar: React.FC<{
   searchQuery: string;
   onSearchChange: (value: string) => void;
   isInHeader?: boolean;
-  activeSearchQuery: string;
   setActiveSearchQuery: (query: string) => void;
   onClickMapOpen: () => void;
   userCity: string;
@@ -81,7 +80,6 @@ const SearchBar: React.FC<{
   searchQuery,
   onSearchChange,
   isInHeader = false,
-  activeSearchQuery,
   setActiveSearchQuery,
   onClickMapOpen,
   userCity,
@@ -621,7 +619,6 @@ const HomePage: React.FC = () => {
         isHomeSearchVisible={isSearchBarInViewport}
         headerSearchQuery={headerSearchQuery}
         setHeaderSearchQuery={setHeaderSearchQuery}
-        activeSearchQuery={activeSearchQuery}
         setActiveSearchQuery={setActiveSearchQuery}
       />
       <div className="homepage-container fade-in" style={{ paddingTop: "80px" }}>
@@ -657,7 +654,6 @@ const HomePage: React.FC = () => {
               searchQuery={homeSearchQuery}
               onSearchChange={setHomeSearchQuery}
               isInHeader={false}
-              activeSearchQuery={activeSearchQuery}
               setActiveSearchQuery={setActiveSearchQuery}
               onClickMapOpen={handleClickMapOpen}
               userCity={userCity}
