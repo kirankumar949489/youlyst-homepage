@@ -1,0 +1,103 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "./styles.scss";
+
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  --background: #F4F2EE;
+  --foreground: #171717;
+  --font-open: "Be Vietnam Pro", !important;
+  --primary: #2067FA;
+  --bg-gradient: radial-gradient(circle at top, #6c9cff, #2067fa);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #F3F2F1;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: rgb(0, 0, 0);
+  background: var(--background);
+  font-family: var(--font-open) !important;
+  padding: 0 12px;
+  margin-left: 5%; /* Reduced from 10% to give more space */
+  margin-right: 5%;
+  justify-content: center;
+}
+
+.font-open {
+  font-family: var(--font-open) !important;
+}
+
+/* Add max-width to sections-wrapper to prevent overflow */
+.sections-wrapper {
+  max-width: 1200px; /* Matches the 8-card grid width */
+  margin: 0 auto; /* Center the container */
+}
+
+/* Responsive adjustments for body padding */
+@media (min-width: 2000px) {
+  body {
+    padding: 0 200px;
+  }
+  .sections-wrapper {
+    max-width: 1400px; /* Allow a bit more width on very large screens */
+  }
+}
+
+@media (min-width: 1600px) and (max-width: 1999.98px) {
+  body {
+    padding: 0 150px;
+  }
+  .sections-wrapper {
+    max-width: 1200px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1599.98px) {
+  body {
+    padding: 0 0px;
+  }
+  .sections-wrapper {
+    max-width: 100%; /* Use full available width */
+    padding: 0 20px; /* Add some padding to prevent cards from touching edges */
+  }
+}
+
+@media (min-width: 990px) and (max-width: 1199.98px) {
+  body {
+    padding: 0 90px;
+  }
+  .sections-wrapper {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 989.98px) {
+  body {
+    padding: 0 40px;
+  }
+  .sections-wrapper {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  body {
+    padding: 0 20px;
+  }
+  .sections-wrapper {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+}

@@ -1,0 +1,142 @@
+:root {
+    --header-gap: 1rem;
+    --header-height: 3.5rem; /* 56px */
+  }
+  
+  .header-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--header-gap);
+    height: var(--header-height);
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+  
+      .logo {
+        height: 2rem; /* 32px */
+        width: 2rem;
+        object-fit: contain;
+        cursor: pointer;
+      }
+  
+      .brand-name {
+        font-family: 'Outfit', sans-serif;
+        font-size: 1.375rem; /* 22px */
+        font-weight: 600;
+        color: #1E1E1E;
+      }
+    }
+  
+    .location-text {
+      font-size: 0.875rem; /* 14px */
+      text-transform: capitalize;
+    }
+  }
+  
+  .header-search-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+  
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  
+    &.hidden {
+      opacity: 0;
+      transform: translateY(-0.625rem); /* -10px */
+      pointer-events: none;
+    }
+  
+    .header-search-bar {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 34.375rem; /* 550px */
+      height: 2.75rem; /* 44px */
+      border-radius: 0.5rem;
+      box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+      border: 1px solid #e0e0e0;
+      background-color: #fff;
+  
+      .divider {
+        height: 1.75rem; /* 28px */
+        width: 1px;
+        background-color: #e0e0e0;
+        margin: 0 0.5rem;
+      }
+  
+      .search-btn {
+        padding: 0.25rem;
+      }
+    }
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  
+    .post-list {
+      padding: 0.25rem 0.5rem;
+    }
+  
+    .sign-in-btn {
+      padding: 0.25rem 0.5rem;
+    }
+  }
+  
+  .dialog-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    .dialog-title-text {
+      font-size: 1rem; /* 16px */
+      color: #000;
+    }
+  }
+  
+  .dialog-form {
+    width: 100%;
+  
+    .dialog-label {
+      font-size: 0.75rem; /* 12px */
+      color: #5D727D;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+  
+    .dialog-text-input {
+      width: 100%;
+    }
+  
+    .map-container {
+      height: 17.5rem; /* 280px */
+      width: 100%;
+    }
+  }
+  
+  .dialog-apply-btn {
+    background-color: #2067FA;
+    color: #fff;
+    font-size: 0.8125rem; /* 13px */
+    padding: 0.25rem 0.5rem;
+    text-transform: none;
+  
+    &:hover {
+      background-color: #1A56DB;
+    }
+  }

@@ -1,0 +1,15 @@
+# Ignore dependencies and build files
+node_modules/
+.next/
+.cache/
+out/
+dist/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore logs and lock files
+*.log
+package-lock.json
+yarn.lock
