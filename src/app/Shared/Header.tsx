@@ -1,6 +1,6 @@
 "use client";
 
-import { AppBar, Badge, Button, Dialog, DialogActions, DialogContent, DialogTitle, Drawer, IconButton, List, ListItem, Menu, Slider, TextField, Toolbar, useMediaQuery, useTheme } from '@mui/material';
+import { AppBar, Button, Dialog, DialogActions, DialogContent, DialogTitle, Drawer, IconButton, List, ListItem, Menu, Slider, TextField, Toolbar, useMediaQuery, useTheme } from '@mui/material';
 import React, { useCallback, useEffect, useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import { AddCircleOutlineRounded, CloseRounded, KeyboardArrowDownRounded, PersonOutlineRounded, PlaceOutlined, SearchRounded } from '@mui/icons-material';
@@ -9,6 +9,7 @@ import Grid from '@mui/material/Grid2';
 import GoogleMapComponent from './GoogleMap';
 import logo from "../Shared/logo.png";
 import Link from 'next/link';
+import Image from 'next/image';
 import './Header.scss';
 
 interface HeaderProps {
@@ -16,19 +17,17 @@ interface HeaderProps {
   isHomeSearchVisible: boolean;
   headerSearchQuery: string;
   setHeaderSearchQuery: (query: string) => void;
-  activeSearchQuery: string;
   setActiveSearchQuery: (query: string) => void;
 }
 
 const drawerWidth = 240;
 
-const Header: React.FC<HeaderProps> = ({ 
-  window: windowProp, 
-  isHomeSearchVisible, 
-  headerSearchQuery, 
+const Header: React.FC<HeaderProps> = ({
+  window: windowProp,
+  isHomeSearchVisible,
+  headerSearchQuery,
   setHeaderSearchQuery,
-  activeSearchQuery,
-  setActiveSearchQuery
+  setActiveSearchQuery,
 }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
@@ -91,10 +90,10 @@ const Header: React.FC<HeaderProps> = ({
           sx={{
             height: "100%",
             border: "none",
-            fontSize: "0.8125rem", // 13px
+            fontSize: "0.8125rem",
             color: "#000",
             fontWeight: "bold",
-            padding: "0 0.375rem", // 6px
+            padding: "0 0.375rem",
             "&:hover": { background: "transparent" },
           }}
         >
@@ -130,9 +129,9 @@ const Header: React.FC<HeaderProps> = ({
         slotProps={{
           input: {
             sx: {
-              fontSize: "0.8125rem", // 13px
-              height: "2.75rem", // 44px
-              padding: "0 0.375rem", // 6px
+              fontSize: "0.8125rem",
+              height: "2.75rem",
+              padding: "0 0.375rem",
               border: "none",
               "& .MuiOutlinedInput-notchedOutline": { border: "none" },
               "&:hover .MuiOutlinedInput-notchedOutline": { border: "none" },
@@ -142,7 +141,7 @@ const Header: React.FC<HeaderProps> = ({
         }}
       />
       <Button className="search-btn">
-        <SearchRounded sx={{ fontSize: "1.25rem" }} /> {/* 20px */}
+        <SearchRounded sx={{ fontSize: "1.25rem" }} />
       </Button>
     </div>
   );
@@ -153,7 +152,7 @@ const Header: React.FC<HeaderProps> = ({
         component="nav"
         sx={{
           boxShadow: scrolling ? "0rem 0.125rem 0.625rem rgba(0, 0, 0, 0.2)" : "none",
-          px: { lg: "3.125rem", xl: "7.5rem" }, // lg: 50px, xl: 120px
+          px: { lg: "3.125rem", xl: "7.5rem" },
           backgroundColor: "#fff",
           color: "#000",
           position: "fixed",
@@ -172,13 +171,15 @@ const Header: React.FC<HeaderProps> = ({
               onClick={handleDrawerToggle}
               sx={{ display: { xs: 'flex', lg: 'none' }, padding: "0.375rem" }}
             >
-              <MenuIcon sx={{ fontSize: "1.25rem" }} /> {/* 20px */}
+              <MenuIcon sx={{ fontSize: "1.25rem" }} />
             </IconButton>
             <div className="logo-container">
               <Link href="/" passHref>
-                <img 
-                  src={logo.src}
+                <Image
+                  src={logo}
                   alt="YouLyst icon"
+                  width={32}
+                  height={32}
                   className="logo"
                 />
               </Link>
@@ -192,10 +193,10 @@ const Header: React.FC<HeaderProps> = ({
               onClick={handleClickMapOpen}
               startIcon={<PlaceOutlined fontSize="small" sx={{ color: "#2067FA", fontSize: "1.125rem" }} />}
               sx={{
-                fontSize: "0.875rem", // 14px
+                fontSize: "0.875rem",
                 color: "#2067fa",
-                padding: "0 0.375rem", // 6px
-                marginLeft: "5.625rem", // 90px
+                padding: "0 0.375rem",
+                marginLeft: "5.625rem",
                 "&:hover": { background: "transparent", fontWeight: "bold" },
               }}
             >
@@ -220,12 +221,12 @@ const Header: React.FC<HeaderProps> = ({
               {/* Future add icons for chat and bell */}
             </ListItem>
             <ListItem disablePadding sx={{ display: { xs: 'none', md: 'block' } }}>
-              <Button 
-                variant="contained" 
-                size="small" 
-                className="post-list" 
+              <Button
+                variant="contained"
+                size="small"
+                className="post-list"
                 startIcon={<AddCircleOutlineRounded sx={{ fontSize: "1.25rem" }} />}
-                sx={{ 
+                sx={{
                   textTransform: "none",
                   backgroundColor: "#2067FA",
                   color: "#FFFFFF",
@@ -235,7 +236,7 @@ const Header: React.FC<HeaderProps> = ({
                     backgroundColor: "#1A56DB",
                     transform: "scale(0.95)",
                   },
-                  fontSize: "0.8125rem", // 13px
+                  fontSize: "0.8125rem",
                   padding: "0.25rem 0.5rem",
                 }}
               >
@@ -248,11 +249,11 @@ const Header: React.FC<HeaderProps> = ({
               </IconButton>
             </ListItem>
             <ListItem disablePadding sx={{ display: { xs: 'none', sm: 'block' } }}>
-              <Button 
-                variant="outlined" 
-                size="small" 
+              <Button
+                variant="outlined"
+                size="small"
                 className="sign-in-btn"
-                sx={{ 
+                sx={{
                   textTransform: "none",
                   backgroundColor: "transparent",
                   color: "#2067FA",
@@ -263,7 +264,7 @@ const Header: React.FC<HeaderProps> = ({
                     borderColor: "#1A56DB",
                     transform: "scale(0.95)",
                   },
-                  fontSize: "0.8125rem", // 13px
+                  fontSize: "0.8125rem",
                   padding: "0.25rem 0.5rem",
                 }}
               >
