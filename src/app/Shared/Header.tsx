@@ -1,16 +1,40 @@
 "use client";
 
-import { AppBar, Button, Dialog, DialogActions, DialogContent, DialogTitle, Drawer, IconButton, List, ListItem, Menu, Slider, TextField, Toolbar, useMediaQuery, useTheme } from '@mui/material';
-import React, { useCallback, useEffect, useState } from 'react';
-import MenuIcon from '@mui/icons-material/Menu';
-import { AddCircleOutlineRounded, CloseRounded, KeyboardArrowDownRounded, PersonOutlineRounded, PlaceOutlined, SearchRounded } from '@mui/icons-material';
-import AllListings from '@/app/AllListings';
-import Grid from '@mui/material/Grid2';
-import GoogleMapComponent from './GoogleMap';
+import {
+  AppBar,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  Menu,
+  Slider,
+  TextField,
+  Toolbar,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import React, { useCallback, useEffect, useState } from "react";
+import MenuIcon from "@mui/icons-material/Menu";
+import {
+  AddCircleOutlineRounded,
+  CloseRounded,
+  KeyboardArrowDownRounded,
+  PersonOutlineRounded,
+  PlaceOutlined,
+  SearchRounded,
+} from "@mui/icons-material";
+import AllListings from "@/app/AllListings";
+import Grid from "@mui/material/Grid2";
+import GoogleMapComponent from "./GoogleMap";
 import logo from "../Shared/logo.png";
-import Link from 'next/link';
-import Image from 'next/image';
-import './Header.scss';
+import Link from "next/link";
+import Image from "next/image";
+import "./Header.scss";
 
 interface HeaderProps {
   window?: () => Window;
@@ -42,7 +66,7 @@ const Header: React.FC<HeaderProps> = ({
   const handleMapClose = () => setMapOpen(false);
   const handleDrawerToggle = () => setMobileOpen((prevState) => !prevState);
 
-  const getWindow = () => (typeof windowProp === 'function' ? windowProp() : window);
+  const getWindow = () => (typeof windowProp === "function" ? windowProp() : window);
   const container = windowProp !== undefined ? () => getWindow().document.body : undefined;
 
   const handleScroll = useCallback(() => {
@@ -129,7 +153,7 @@ const Header: React.FC<HeaderProps> = ({
         slotProps={{
           input: {
             sx: {
-              fontSize: "0.8125rem",
+              fontSize: "16px", // Increased from 0.8125rem (~13px)
               height: "2.75rem",
               padding: "0 0.375rem",
               border: "none",
@@ -169,19 +193,13 @@ const Header: React.FC<HeaderProps> = ({
               aria-label="open drawer"
               edge="start"
               onClick={handleDrawerToggle}
-              sx={{ display: { xs: 'flex', lg: 'none' }, padding: "0.375rem" }}
+              sx={{ display: { xs: "flex", lg: "none" }, padding: "0.375rem" }}
             >
               <MenuIcon sx={{ fontSize: "1.25rem" }} />
             </IconButton>
             <div className="logo-container">
               <Link href="/" passHref>
-                <Image
-                  src={logo}
-                  alt="YouLyst icon"
-                  width={32}
-                  height={32}
-                  className="logo"
-                />
+                <Image src={logo} alt="YouLyst icon" width={32} height={32} className="logo" />
               </Link>
               <a className="brand-name">
                 You<span className="text-[#2067FA]">Lyst</span>
@@ -191,7 +209,9 @@ const Header: React.FC<HeaderProps> = ({
               color="primary"
               size="small"
               onClick={handleClickMapOpen}
-              startIcon={<PlaceOutlined fontSize="small" sx={{ color: "#2067FA", fontSize: "1.125rem" }} />}
+              startIcon={
+                <PlaceOutlined fontSize="small" sx={{ color: "#2067FA", fontSize: "1.125rem" }} />
+              }
               sx={{
                 fontSize: "0.875rem",
                 color: "#2067fa",
@@ -204,23 +224,31 @@ const Header: React.FC<HeaderProps> = ({
             </Button>
           </div>
 
-          <div className={`header-search-container ${isHomeSearchVisible ? 'hidden' : 'visible'}`}>
+          <div className={`header-search-container ${isHomeSearchVisible ? "hidden" : "visible"}`}>
             {SearchBar}
           </div>
 
           <List className="header-right">
-            <ListItem disablePadding sx={{ display: { xs: 'block', lg: 'none' } }}>
+            <ListItem disablePadding sx={{ display: { xs: "block", lg: "none" } }}>
               <IconButton sx={{ padding: "0.375rem" }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="1.125rem" height="1.125rem" viewBox="0 0 24 24" fill="none">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1.125rem"
+                  height="1.125rem"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
                   <path d="M20 20L14 14" stroke="black" strokeWidth="2" strokeLinecap="round" />
-                  <path d="M15 9.5C15 10.9587 14.4205 12.3576 13.3891 13.3891C12.3576 14.4205 10.9587 15 9.5 15C8.04131 15 6.64236 14.4205 5.61091 13.3891C4.57946 12.3576 4 10.9587 4 9.5C4 8.04131 4.57946 6.64236 5.61091 5.61091C6.64236 4.57946 8.04131 4 9.5 4C10.9587 4 12.3576 4.57946 13.3891 5.61091C14.4205 6.64236 15 8.04131 15 9.5Z" stroke="black" strokeWidth="2" />
+                  <path
+                    d="M15 9.5C15 10.9587 14.4205 12.3576 13.3891 13.3891C12.3576 14.4205 10.9587 15 9.5 15C8.04131 15 6.64236 14.4205 5.61091 13.3891C4.57946 12.3576 4 10.9587 4 9.5C4 8.04131 4.57946 6.64236 5.61091 5.61091C6.64236 4.57946 8.04131 4 9.5 4C10.9587 4 12.3576 4.57946 13.3891 5.61091C14.4205 6.64236 15 8.04131 15 9.5Z"
+                    stroke="black"
+                    strokeWidth="2"
+                  />
                 </svg>
               </IconButton>
             </ListItem>
-            <ListItem disablePadding>
-              {/* Future add icons for chat and bell */}
-            </ListItem>
-            <ListItem disablePadding sx={{ display: { xs: 'none', md: 'block' } }}>
+            <ListItem disablePadding>{/* Future add icons for chat and bell */}</ListItem>
+            <ListItem disablePadding sx={{ display: { xs: "none", md: "block" } }}>
               <Button
                 variant="contained"
                 size="small"
@@ -243,12 +271,12 @@ const Header: React.FC<HeaderProps> = ({
                 Post new listing
               </Button>
             </ListItem>
-            <ListItem disablePadding sx={{ display: { xs: 'block', md: 'none' } }}>
+            <ListItem disablePadding sx={{ display: { xs: "block", md: "none" } }}>
               <IconButton size="small" className="post-list-btn" sx={{ padding: "0.375rem" }}>
                 <AddCircleOutlineRounded sx={{ fontSize: "1.125rem" }} />
               </IconButton>
             </ListItem>
-            <ListItem disablePadding sx={{ display: { xs: 'none', sm: 'block' } }}>
+            <ListItem disablePadding sx={{ display: { xs: "none", sm: "block" } }}>
               <Button
                 variant="outlined"
                 size="small"
@@ -271,7 +299,7 @@ const Header: React.FC<HeaderProps> = ({
                 Sign in
               </Button>
             </ListItem>
-            <ListItem disablePadding sx={{ display: { xs: 'block', sm: 'none' } }}>
+            <ListItem disablePadding sx={{ display: { xs: "block", sm: "none" } }}>
               <IconButton size="small" className="sign-in-btn" sx={{ padding: "0.375rem" }}>
                 <PersonOutlineRounded fontSize="small" sx={{ fontSize: "1.125rem" }} />
               </IconButton>
@@ -286,16 +314,30 @@ const Header: React.FC<HeaderProps> = ({
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{ keepMounted: true }}
-          sx={{ display: { xs: 'block', lg: 'none' }, '& .MuiDrawer-paper': { boxSizing: 'border-box', width: `${drawerWidth / 16}rem` } }}
+          sx={{
+            display: { xs: "block", lg: "none" },
+            "& .MuiDrawer-paper": { boxSizing: "border-box", width: `${drawerWidth / 16}rem` },
+          }}
         >
           <AllListings />
         </Drawer>
       </nav>
-      <Dialog fullScreen={fullScreen} open={mapOpen} onClose={handleMapClose} sx={{ "& .MuiDialog-paper": { width: "90%", maxWidth: "34.375rem" } }}>
+      <Dialog
+        fullScreen={fullScreen}
+        open={mapOpen}
+        onClose={handleMapClose}
+        sx={{ "& .MuiDialog-paper": { width: "90%", maxWidth: "34.375rem" } }}
+      >
         <DialogTitle id="responsive-dialog-title">
           <div className="dialog-title">
             <h6 className="dialog-title-text">Choose Location</h6>
-            <Button variant="outlined" color="inherit" size="small" onClick={handleMapClose} sx={{ padding: "0.25rem" }}>
+            <Button
+              variant="outlined"
+              color="inherit"
+              size="small"
+              onClick={handleMapClose}
+              sx={{ padding: "0.25rem" }}
+            >
               <CloseRounded sx={{ fontSize: "1.125rem" }} />
             </Button>
           </div>
@@ -303,39 +345,4 @@ const Header: React.FC<HeaderProps> = ({
         <DialogContent>
           <form className="dialog-form">
             <Grid container spacing={2}>
-              <Grid size={{ xs: 12 }}>
-                <label className="dialog-label">Search by City or Zip Code</label>
-                <TextField
-                  required
-                  id="outlined-required"
-                  size="small"
-                  variant="outlined"
-                  className="dialog-text-input"
-                  defaultValue={userCity || ""}
-                  sx={{ "& .MuiInputBase-root": { fontSize: "0.8125rem" } }}
-                />
-              </Grid>
-              <Grid size={{ xs: 12 }}>
-                <label className="dialog-label">Location <span className="text-[#2067FA]">[32 Miles]</span></label>
-                <Slider defaultValue={50} aria-label="Default" valueLabelDisplay="auto" sx={{ height: "0.375rem" }} />
-              </Grid>
-              <Grid size={{ xs: 12 }}>
-                <label className="dialog-label">(Or) Drag the Pointer here</label>
-                <div className="map-container">
-                  <GoogleMapComponent />
-                </div>
-              </Grid>
-            </Grid>
-          </form>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleMapClose} autoFocus className="dialog-apply-btn">
-            Apply
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
-  );
-};
-
-export default Header;
+              <Grid size={{ xs: 12
