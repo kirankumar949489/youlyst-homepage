@@ -20,6 +20,7 @@ export default function Page() {
       <main className="flex flex-col lg:px-[40px] pt-[60px] pb-[20px]">
         <HomePage />
       </main>
+      <Footer/>
     </div>
   );
 }
