@@ -119,7 +119,7 @@ const SearchBar: React.FC<{
         slotProps={{
           input: {
             sx: {
-              fontSize: "14px",
+              fontSize: "16px", // Increased from 14px
               height: "48px",
               padding: "0 8px",
               border: "none",
